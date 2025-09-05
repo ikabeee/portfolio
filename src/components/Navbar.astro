@@ -1,14 +1,18 @@
-<header class="border-[#363C49] border-b-2 top-0 w-full p-6 ">
+---
+import { navItems } from "../constants/navItems";
+---
+
+<header class="border-[#363C49] border-b-2 fixed top-0 w-full p-6 bg-base-100">
     <nav class="flex flex-row max-w-screen-xl justify-between items-center mx-auto">
         <a class="transition-colors duration-200 hover:text-[#569CDE]" href="/">
             <h1 class="text-2xl font-bold">Carlos Gonzalez</h1>
         </a>
         <ul class="flex gap-6 text-lg font-medium">
-            <li><a class="transition-colors duration-200 hover:text-[#569CDE]" href="/">Acerca de mí</a></li>
-            <li><a class="transition-colors duration-200 hover:text-[#569CDE]" href="/about">Sobre mí</a></li>
-            <li><a class="transition-colors duration-200 hover:text-[#569CDE]" href="/projects">Proyectos</a></li>
-            <li><a class="transition-colors duration-200 hover:text-[#569CDE]" href="/experience">Experiencia</a></li>
-            <li><a class="transition-colors duration-200 hover:text-[#569CDE]" href="/contact">Contacto</a></li>
+            {
+                navItems.map((item) => (
+                    <li><a class="transition-colors duration-200 hover:text-[#569CDE]" href={item.href}>{item.name}</a></li>
+                ))
+            }
         </ul>
     </nav>
 </header>

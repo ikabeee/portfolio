@@ -6,26 +6,19 @@ const metadata = {
 ---
 
 <section
-  class="flex flex-col md:flex-row items-center justify-between md:gap-x-18 gap-y-8 w-full mb-12 md:mb-24"
-  aria-label="Cita inspiradora"
+  class="flex flex-col md:flex-row items-center justify-between md:gap-x-18 gap-y-8 w-full md:mb-24"
+  aria-label="Frase de Gabe Newell"
 >
-  <!-- Img with solid shadow-->
-  <figure
-    class="w-64 md:min-w-96 aspect-[3/4] flex relative hover:scale-105 transition-transform duration-500 ease-in-out"
+  <div
+    class="w-64 md:min-w-96 aspect-[3/4] transition-transform duration-500 ease-in-out"
   >
     <img
       src={metadata.src}
       alt={metadata.alt}
-      class="rounded-[15px] w-full object-cover object-top relative z-10"
+      class="rounded-[15px] w-full object-cover"
     />
-    <!-- Shadow -->
-    <div
-      class="bg-[#21252B] w-full aspect-[3/4] rounded-[15px] absolute top-4 md:top-15 right-4 md:right-15 z-0 hidden md:block"
-      aria-hidden="true"
-    >
-    </div>
-  </figure>
-  <!-- Img with solid shadow-->
+  </div>
+
 
   <!-- Quote -->
   <div class="gap-y-5 flex flex-col w-full">
