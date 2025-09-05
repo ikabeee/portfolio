@@ -1,0 +1,39 @@
+---
+import Github from "./icons/social-media/Github.astro";
+import Instagram from "./icons/social-media/Instagram.astro";
+import Linkedin from "./icons/social-media/Linkedin.astro";
+import Tiktok from "./icons/social-media/Tiktok.astro";
+import X from "./icons/social-media/X.astro";
+import Youtube from "./icons/social-media/Youtube.astro";
+---
+
+<footer
+  class="footer sm:footer-horizontal items-center p-4 w-full fixed bottom-0 border-[#363C49] border-t-2"
+>
+  <aside class="grid-flow-col items-center">
+    <p>
+      <span class="font-bold"> Copyright © {new Date().getFullYear()} </span>
+      Carlos Gonzalez. Todos los derechos reservados.
+    </p>
+  </aside>
+  <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+    <a>
+      <Github />
+    </a>
+    <a>
+      <Tiktok />
+    </a>
+    <a>
+      <Linkedin />
+    </a>
+    <a>
+      <Instagram />
+    </a>
+    <a>
+      <Youtube />
+    </a>
+    <a>
+      <X />
+    </a>
+  </nav>
+</footer>
