@@ -1,9 +1,9 @@
 ---
-import Button from "../Button.astro";
-import Send from "./general/Send.astro";
+import Button from "./Button.astro";
+import Send from "./icons/general/Send.astro";
 ---
 
-<form class="flex flex-col gap-4 bg-base-200 p-8 rounded-lg shadow-md">
+<form {...Astro.props} class="flex flex-col gap-4 bg-base-200 p-8 rounded-lg shadow-md w-1/2">
   <fieldset class="fieldset">
     <legend class="fieldset-legend text-lg">Nombre/empresa</legend>
     <input
