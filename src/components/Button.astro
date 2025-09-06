@@ -1,9 +1,10 @@
 ---
-const { label, icon: Icon } = Astro.props;
+const { label, icon: Icon, size, type } = Astro.props;
 ---
 <button
+  type={type}
   title="cv-carlos-gonzalez"
-  class="btn btn-xl flex gap-2 bg-[#61AFEF] text-white items-center"
+  class={`btn btn-${size} flex gap-2 bg-[#61AFEF] text-white items-center`}
 >
   {label}
   <Icon class="size-5 md:size-6 fill-white" />

@@ -3,6 +3,9 @@ import Contact from "../components/Contact.astro";
 import Experience from "../components/Experience.astro";
 import GabePhrase from "../components/GabePhrase.astro";
 import Hero from "../components/Hero.astro";
+import BackendDev from "../components/icons/general/BackendDev.astro";
+import Code from "../components/icons/general/Code.astro";
+import JoiningQueue from "../components/icons/general/JoiningQueue.astro";
 import Projects from "../components/Projects.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Skills from "../components/Skills.astro";
@@ -10,24 +13,24 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Portafolio - Carlos Gonzalez">
-  <main class="space-y-28">
+  <div class="mb-8 space-y-20">
     <SectionContainer id="hero">
       <Hero />
     </SectionContainer>
     <SectionContainer>
       <GabePhrase />
     </SectionContainer>
-    <SectionContainer id="skills" title="Habilidades">
+    <SectionContainer id="skills" icon={BackendDev} title="Habilidades">
       <Skills />
     </SectionContainer>
-    <SectionContainer id="experience" class="py-8">
-      <Experience />
-    </SectionContainer>
-    <SectionContainer id="projects" class="py-8">
+    <SectionContainer id="projects" title="Proyectos" icon={Code}>
       <Projects />
     </SectionContainer>
-    <SectionContainer id="contact" class="py-8">
+    <SectionContainer id="experience" title="Experiencia" icon={Code}>
+      <Experience />
+    </SectionContainer>
+    <SectionContainer id="contact" title="¡Colaboremos!" icon={JoiningQueue}>
       <Contact />
     </SectionContainer>
-  </main>
+  </div>
 </Layout>
