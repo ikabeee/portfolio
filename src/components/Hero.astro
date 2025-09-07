@@ -1,5 +1,5 @@
 ---
-import { socialMedia } from "../constants/socialMedia";
+import { socialMedias } from "../constants/socialMedias";
 import Button from "./Button.astro";
 import Download from "./icons/general/Download.astro";
 
@@ -44,7 +44,7 @@ const metadata = {
       class="flex flex-row flex-wrap gap-4 md:gap-6 items-center justify-center lg:justify-start"
     >
       {
-        socialMedia.map((item) => (
+        socialMedias.map((item) => (
           <a
             href={item.url}
             target="_blank"

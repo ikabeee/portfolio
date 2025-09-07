@@ -4,8 +4,15 @@ import Dotnet from "../components/icons/technologies/Dotnet.astro";
 import ExpressJs from "../components/icons/technologies/ExpressJs.astro";
 import NodeJS from "../components/icons/technologies/NodeJS.astro";
 import React from "../components/icons/technologies/React.astro";
+import AngularWhite from "../components/icons/white-tech/AngularWhite.astro";
+import AstroWhite from "../components/icons/white-tech/AstroWhite.astro";
+import DotnetWhite from "../components/icons/white-tech/DotnetWhite.astro";
+import ExpressWhite from "../components/icons/white-tech/ExpressWhite.astro";
+import NodeWhite from "../components/icons/white-tech/NodeWhite.astro";
+import ReactWhite from "../components/icons/white-tech/ReactWhite.astro";
+import type { Job } from "../types/Job";
 
-export const jobs = [
+export const jobs: Job[] = [
     {
         company: "Freelance",
         position: "Desarrollador Web",
@@ -15,19 +22,19 @@ export const jobs = [
         technologies: [
             {
                 name: "React",
-                icon: React
+                icon: ReactWhite
             },
             {
                 name: "Node.js",
-                icon: NodeJS,
+                icon: NodeWhite
             },
             {
                 name: "ExpressJS",
-                icon: ExpressJs
+                icon: ExpressWhite
             },
             {
                 name: "Astro",
-                icon: AstroIcon
+                icon: AstroWhite
             }
         ],
         type: "Tiempo completo"
@@ -38,20 +45,20 @@ export const jobs = [
         duration: "Abril 2025 - Julio 2025",
         location: "Remoto",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        tech: [
+        technologies: [
             {
                 name: "Angular",
-                icon: Angular
+                icon: AngularWhite
             },
             {
                 name: "Node.js",
-                icon: NodeJS,
+                icon: NodeWhite,
             },
             {
                 name: ".NET",
-                icon: Dotnet
+                icon: DotnetWhite
             },
         ],
-        technologies: "Tiempo completo"
+        type: "Tiempo completo"
     },
 ];

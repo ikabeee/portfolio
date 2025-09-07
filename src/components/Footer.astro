@@ -1,5 +1,5 @@
 ---
-import { socialMedia } from "../constants/socialMedia";
+import { socialMedias } from "../constants/socialMedias";
 ---
 
 <footer
@@ -13,7 +13,7 @@ import { socialMedia } from "../constants/socialMedia";
   </aside>
   <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
     {
-      socialMedia.map((item) => (
+      socialMedias.map((item) => (
         <a
           href={item.url}
           target="_blank"

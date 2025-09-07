@@ -5,7 +5,9 @@ import Tiktok from "../components/icons/social-media/Tiktok.astro";
 import Youtube from "../components/icons/social-media/Youtube.astro";
 import Threads from "../components/icons/social-media/Threads.astro";
 import X from "../components/icons/social-media/X.astro";
-export const socialMedia = [
+import type { SocialMedia } from "../types/SocialMedia";
+
+export const socialMedias: SocialMedia[] = [
     {
         name: "GitHub",
         url: "https://github.com/ikabeee",
