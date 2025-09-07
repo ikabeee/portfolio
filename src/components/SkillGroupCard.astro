@@ -6,23 +6,23 @@ const { icon: Icon, name, technologies } = Astro.props;
 ---
 
 <div
-  class="flex flex-col bg-base-200 rounded-lg boder-base-300 overflow-hidden"
+  class="flex flex-col bg-base-200 rounded-lg boder-base-300 overflow-hidden transition-all duration-300 hover:-translate-y-1"
 >
   <div
     class="text-xl font-semibold bg-[#5C6370] p-4 items-center gap-x-2"
   >
-    <div class="flex flex-row items-center gap-x-2 ml-4">
-      <Icon class="size-12" />
-      <span class="text-3xl font-bold">{name}</span>
+    <div class="flex flex-row items-center gap-x-2 ml-2">
+      <Icon class="size-10" />
+      <span class="text-2xl font-bold">{name}</span>
     </div>
   </div>
   <div class="p-4 grid grid-cols-3 gap-4">
     {
       technologies.map((tech) => (
-        <div class="flex flex-col justify-center items-center">
-          <tech.icon class="w-12 h-12" />
-          <span class="mt-2 text-center font-medium">{tech.name}</span>
-        </div>
+        <a href={tech.url} class="flex flex-col justify-center items-center transform hover:scale-110 transition-transform" target="_blank" rel="noopener noreferrer">
+          <tech.icon class="size-12" />
+          <span class="mt-2 text-center font-medium text-xs">{tech.name}</span>
+        </a>
       ))
     }
   </div>

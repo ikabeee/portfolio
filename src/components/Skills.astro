@@ -3,6 +3,6 @@ import SkillGroupCard from "./SkillGroupCard.astro";
 import { skillGroups } from "../constants/skillGroups";
 ---
 
-{skillGroups.map((group) => (
-  <SkillGroupCard {...group} />
-))}
+<div class="grid grid-cols-4 gap-6">
+  {skillGroups.map((group) => <SkillGroupCard {...group} />)}
+</div>
