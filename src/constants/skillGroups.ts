@@ -2,7 +2,7 @@ import BinaryFile from "../components/icons/general/BinaryFile.astro";
 import Css from "../components/icons/technologies/Css.astro";
 import type { SkillGroup } from "../interfaces/SkillGroup";
 
-export const skillGroup: SkillGroup[] = [
+export const skillGroups: SkillGroup[] = [
     {
         icon: BinaryFile,
         name: "Lenguajes",

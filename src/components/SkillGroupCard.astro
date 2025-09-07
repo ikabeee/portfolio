@@ -1,7 +1,8 @@
 ---
-import Backend from "./icons/general/Backend.astro";
-import ReactWhite from "./icons/white-tech/ReactWhite.astro";
+import type { SkillGroup } from "../interfaces/SkillGroup";
+interface Props extends SkillGroup {}
 
+const { icon: Icon, name, technologies } = Astro.props;
 ---
 
 <div
@@ -11,28 +12,18 @@ import ReactWhite from "./icons/white-tech/ReactWhite.astro";
     class="text-xl font-semibold bg-[#5C6370] p-4 items-center gap-x-2"
   >
     <div class="flex flex-row items-center gap-x-2 ml-4">
-      <Backend class="size-12" />
-      <span class="text-3xl font-bold">Test</span>
+      <Icon class="size-12" />
+      <span class="text-3xl font-bold">{name}</span>
     </div>
   </div>
   <div class="p-4 grid grid-cols-3 gap-4">
-    <div class="flex justify-center items-center">
-      <ReactWhite class="w-12 h-12" />
-    </div>
-    <div class="flex justify-center items-center">
-      <ReactWhite class="w-12 h-12" />
-    </div>
-    <div class="flex justify-center items-center">
-      <ReactWhite class="w-12 h-12" />
-    </div>
-    <div class="flex justify-center items-center">
-      <ReactWhite class="w-12 h-12" />
-    </div>
-    <div class="flex justify-center items-center">
-      <ReactWhite class="w-12 h-12" />
-    </div>
-    <div class="flex justify-center items-center">
-      <ReactWhite class="w-12 h-12" />
-    </div>
+    {
+      technologies.map((tech) => (
+        <div class="flex flex-col justify-center items-center">
+          <tech.icon class="w-12 h-12" />
+          <span class="mt-2 text-center font-medium">{tech.name}</span>
+        </div>
+      ))
+    }
   </div>
 </div>

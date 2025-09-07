@@ -1,6 +1,8 @@
 ---
-
 import SkillGroupCard from "./SkillGroupCard.astro";
+import { skillGroups } from "../constants/skillGroups";
 ---
 
-<SkillGroupCard/>
+{skillGroups.map((group) => (
+  <SkillGroupCard {...group} />
+))}
