@@ -6,33 +6,32 @@ const metadata = {
 ---
 
 <section
-  class="flex flex-col md:flex-row items-center justify-between md:gap-x-18 gap-y-8 w-full md:mb-24"
+  class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-16 xl:gap-18 w-full mb-12 md:mb-16 lg:mb-24"
   aria-label="Frase de Gabe Newell"
 >
+  <!-- Image -->
   <div
-    class="w-64 md:min-w-96 aspect-[3/4] transition-transform duration-500 ease-in-out"
+    class="w-48 md:w-64 lg:w-80 xl:w-96 aspect-[3/4] flex-shrink-0 transition-transform duration-500 ease-in-out hover:scale-105"
   >
     <img
       src={metadata.src}
       alt={metadata.alt}
-      class="rounded-[15px] w-full object-cover"
+      class="rounded-[15px] w-full h-full object-cover shadow-lg"
     />
   </div>
 
-
   <!-- Quote -->
-  <div class="gap-y-5 flex flex-col w-full">
-    <blockquote class="flex flex-col gap-y-4 md:gap-y-7">
-      <div class="flex flex-col gap-y-4 md:gap-y-7">
-        <p class="italic font-light text-2xl md:text-4xl/relaxed">
+  <div class="flex flex-col gap-4 md:gap-5 lg:gap-6 w-full md:flex-1">
+    <blockquote class="flex flex-col gap-4 md:gap-5 lg:gap-7">
+      <div class="flex flex-col gap-4 md:gap-5 lg:gap-7">
+        <p class="italic font-light text-lg md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed md:leading-relaxed lg:leading-relaxed text-center md:text-left">
           La clave del éxito es admitir que no sabes algo y luego descubrir cómo
           aprenderlo
         </p>
-        <footer class="italic font-light text-2xl md:text-4xl">
+        <footer class="italic font-light text-base md:text-xl lg:text-2xl xl:text-3xl text-center md:text-left opacity-80">
           <cite>- Gabe Newell</cite>
         </footer>
       </div>
     </blockquote>
   </div>
-  <!-- Quote -->
 </section>
