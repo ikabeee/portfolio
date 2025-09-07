@@ -3,36 +3,36 @@ import Button from "./Button.astro";
 import Send from "./icons/general/Send.astro";
 ---
 
-<form {...Astro.props} class="flex flex-col gap-4 bg-base-200 p-8 rounded-lg shadow-md w-1/2">
+<form {...Astro.props} class="flex flex-col gap-4 bg-base-200 p-4 md:p-6 lg:p-8 rounded-lg shadow-md w-full">
   <fieldset class="fieldset">
-    <legend class="fieldset-legend text-lg">Nombre/empresa</legend>
+    <legend class="fieldset-legend text-base md:text-lg">Nombre/empresa</legend>
     <input
       type="text"
       name="name"
       placeholder="Juan Perez"
-      class="input input-bordered w-full"
+      class="input input-bordered w-full text-sm md:text-base"
       required
     />
   </fieldset>
-  <fieldset class="fieldset text-lg">
-    <legend class="fieldset-legend">Correo electrónico</legend>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-base md:text-lg">Correo electrónico</legend>
     <input
       type="email"
       name="email"
       placeholder="example@gmail.com"
-      class="input input-bordered w-full"
+      class="input input-bordered w-full text-sm md:text-base"
       required
     />
   </fieldset>
-  <fieldset class="fieldset text-lg">
-    <legend class="fieldset-legend">¿Cuál es tu idea?</legend>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-base md:text-lg">¿Cuál es tu idea?</legend>
     <textarea
       name="message"
       placeholder="Explícame tu proyecto..."
-      class="textarea textarea-bordered w-full h-32"
+      class="textarea textarea-bordered w-full h-24 md:h-32 text-sm md:text-base resize-none"
       required></textarea>
   </fieldset>
-  <div>
+  <div class="flex justify-center md:justify-start">
     <Button type="submit" label="Enviar" size="sm" icon={Send} />
   </div>
 </form>
