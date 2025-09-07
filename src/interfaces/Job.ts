@@ -1,4 +1,4 @@
-export type Job = {
+export interface Job {
     company: string;
     position: string;
     duration: string;

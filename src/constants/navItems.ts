@@ -1,4 +1,4 @@
-import type { NavItem } from "../types/NavItem";
+import type { NavItem } from "../interfaces/NavItem";
 
 export const navItems: NavItem[] = [
     { name: "Acerca de mí", href: "#hero" },

@@ -1,16 +1,10 @@
-import Angular from "../components/icons/technologies/Angular.astro";
-import AstroIcon from "../components/icons/technologies/AstroIcon.astro";
-import Dotnet from "../components/icons/technologies/Dotnet.astro";
-import ExpressJs from "../components/icons/technologies/ExpressJs.astro";
-import NodeJS from "../components/icons/technologies/NodeJS.astro";
-import React from "../components/icons/technologies/React.astro";
 import AngularWhite from "../components/icons/white-tech/AngularWhite.astro";
 import AstroWhite from "../components/icons/white-tech/AstroWhite.astro";
 import DotnetWhite from "../components/icons/white-tech/DotnetWhite.astro";
 import ExpressWhite from "../components/icons/white-tech/ExpressWhite.astro";
 import NodeWhite from "../components/icons/white-tech/NodeWhite.astro";
 import ReactWhite from "../components/icons/white-tech/ReactWhite.astro";
-import type { Job } from "../types/Job";
+import type { Job } from "../interfaces/Job";
 
 export const jobs: Job[] = [
     {
