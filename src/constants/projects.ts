@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: "Ruta fácil - Proyecto de investigación",
     duration: "Marzo 2024 - Junio 2024",
-    img: "/src/assets/ruta-facil.png",
+    img: "/ruta-facil.png",
     description: "Ruta fácil es una plataforma diseñada para facilitar la movilidad de personas que se encuentran en el pueblo mágico de Huauchinango, Puebla. La plataforma ofrece una aplicación móvil para los usuarios y un dashboard web para los administradores, permitiendo una gestión eficiente de las rutas y servicios de transporte en la zona.",
     alt: "Dashboard de Ruta fácil",
     codeSource: {
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   {
     title: "EYU",
     duration: "Septiembre 2024 - Diciembre 2024",
-    img: "/src/assets/landing-eyu.png",
+    img: "/landing-eyu.png",
     description: "Explore Your Universe (EYU) es una plataforma web que permite a los usuarios explorar diferentes universidades, programas académicos, y actividades extracurriculares. La plataforma está diseñada para ayudar a los estudiantes a tomar decisiones informadas sobre su educación superior, proporcionando información detallada y recursos útiles.",
     alt: "Catálogo de EYU",
     codeSource: {
