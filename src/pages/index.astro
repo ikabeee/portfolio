@@ -1,36 +1,11 @@
 ---
-import Contact from "../components/Contact.astro";
-import Experience from "../components/Experience.astro";
-import GabePhrase from "../components/GabePhrase.astro";
-import Hero from "../components/Hero.astro";
-import BackendDev from "../components/icons/general/BackendDev.astro";
-import Code from "../components/icons/general/Code.astro";
-import JoiningQueue from "../components/icons/general/JoiningQueue.astro";
-import Projects from "../components/Projects.astro";
-import SectionContainer from "../components/SectionContainer.astro";
-import Skills from "../components/Skills.astro";
-import Layout from "../layouts/Layout.astro";
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Portafolio - Carlos Gonzalez">
-  <div class="mb-8 space-y-20">
-    <SectionContainer id="hero">
-      <Hero />
-    </SectionContainer>
-    <SectionContainer>
-      <GabePhrase />
-    </SectionContainer>
-    <SectionContainer id="skills" icon={BackendDev} title="Habilidades" description="Tecnologías y herramientas que suelo utilizar.">
-      <Skills />
-    </SectionContainer>
-    <SectionContainer id="experience" title="Experiencia Laboral" icon={Code} description="Mi recorrido profesional hasta ahora.">
-      <Experience />
-    </SectionContainer>
-    <SectionContainer id="projects" title="Proyectos" icon={Code} description="Una selección de mis trabajos más relevantes.">
-      <Projects />
-    </SectionContainer>
-    <SectionContainer id="contact" title="¡Colaboremos!" icon={JoiningQueue} description="¿Tienes un proyecto o página web en mente? ¡Estoy aquí para ayudarte!">
-      <Contact />
-    </SectionContainer>
-  </div>
+<Layout>
+	<Welcome />
 </Layout>
