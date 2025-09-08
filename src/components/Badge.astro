@@ -1,0 +1,8 @@
+---
+const { size, icon: Icon, label } = Astro.props;
+---
+
+<span class={`badge bg-[#569CDE] text-white badge-${size} font-medium gap-x-1 text-xs sm:text-sm transition-all duration-200`}>
+    {Icon && <Icon class="size-3 sm:size-4 flex-shrink-0" />}
+    <span class="truncate">{label}</span>
+</span>

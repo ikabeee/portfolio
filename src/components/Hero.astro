@@ -1,0 +1,80 @@
+---
+import { socialMedias } from "../constants/socialMedias";
+import Button from "./Button.astro";
+import Download from "./icons/general/Download.astro";
+
+const metadata = {
+  alt: "Foto de Carlos Gonzalez",
+  src: "/me.jpg",
+};
+---
+
+<div
+  class="flex flex-col-reverse md:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-16 w-full mt-20 md:mt-24 lg:mt-32"
+>
+  <!-- Hero Content -->
+  <div class="gap-4 md:gap-6 flex flex-col w-full md:flex-1">
+    <h1
+      class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#ABB2BF] text-center md:text-left"
+    >
+      ¡Hola soy
+      <span class="text-[#569CDE]">Carlos Gonzalez!</span>
+    </h1>
+    <h2
+      class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#ABB2BF] text-center md:text-left"
+    >
+      Desarrollador Fullstack
+    </h2>
+    <p
+      class="text-[#ABB2BF] text-pretty text-sm md:text-base lg:text-lg max-w-2xl md:max-w-none mx-auto md:mx-0 px-4 md:px-0 leading-relaxed"
+    >
+      Trilingüe con experiencia en proyectos Fullstack, desarrollo de APIs REST
+      y gestión de proyectos. Gracias a mi trayectoria internacional, me adapto
+      con facilidad a equipos multiculturales y dinámicos. Combino habilidades
+      técnicas con competencias blandas como liderazgo, pensamiento crítico y
+      trabajo colaborativo. Más que escribir código, me apasiona aportar en la
+      ideación y evolución de proyectos, buscando siempre que la tecnología sea
+      accesible para todos.
+    </p>
+    <!-- Download Button -->
+    <div class="flex justify-center md:justify-start items-center mt-2">
+      <a
+        href="/cvITCarlosESP.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Ver CV de Carlos Gonzalez"
+        class="btn btn-lg md:btn-xl lg:btn-xl flex gap-3 bg-[#61AFEF] text-white items-center px-6 md:px-8 py-3 md:py-4 text-base md:text-lg lg:text-xl font-medium hover:bg-[#4A9CE8] transition-colors duration-200 no-underline"
+      >
+        ¡Descarga mi CV!
+        <Download class="size-5 md:size-6 lg:size-7 fill-white" />
+      </a>
+    </div>
+    <!-- Social Media -->
+    <div
+      class="flex flex-row flex-wrap gap-3 md:gap-4 lg:gap-6 items-center justify-center md:justify-start mt-1"
+    >
+      {
+        socialMedias.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            class="hover:scale-110 transition-transform duration-300 ease-in-out p-1"
+            title={item.name}
+            aria-label={`Visitar ${item.name}`}
+          >
+            <item.icon class="size-7 md:size-8 lg:size-10" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="w-48 md:w-64 lg:w-80 xl:w-96 aspect-square flex-shrink-0">
+    <img
+      src={metadata.src}
+      alt={metadata.alt}
+      class="rounded-[15px] w-full h-full object-cover object-bottom"
+    />
+  </div>
+</div>

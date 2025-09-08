@@ -1,0 +1,29 @@
+---
+import { socialMedias } from "../constants/socialMedias";
+---
+
+<footer
+  class="footer sm:footer-horizontal items-center p-4 md:p-6 w-full bottom-0 border-[#363C49] border-t-2"
+>
+  <aside class="grid-flow-col items-center">
+    <p class="text-sm md:text-base text-center sm:text-left">
+      <span class="font-bold"> Copyright © {new Date().getFullYear()} </span>
+      Carlos Gonzalez. Todos los derechos reservados.
+    </p>
+  </aside>
+  <nav class="grid-flow-col gap-3 md:gap-4 md:place-self-center md:justify-self-end">
+    {
+      socialMedias.map((item) => (
+        <a
+          href={item.url}
+          target="_blank"
+          class="hover:scale-110 transition-transform duration-300 ease-in-out"
+          title={item.name}
+          aria-label={`Visitar ${item.name}`}
+        >
+          <item.icon class="size-6 md:size-6" />
+        </a>
+      ))
+    }
+  </nav>
+</footer>
