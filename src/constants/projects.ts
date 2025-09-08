@@ -48,9 +48,9 @@ export const projects: Project[] = [
     description: "This is the description for Project One.",
     alt: "Project One",
     codeSource: {
-      api: "",
-      web: "",
-      mobile: ""
+      api: "https://github.com/username/repo-one",
+      web: "https://project-one.com",
+      mobile: "https://project-one-mobile.com"
     },
     technologies: [
       {

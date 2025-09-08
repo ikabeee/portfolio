@@ -1,17 +1,110 @@
 ---
-const { title, img, description, alt } = Astro.props;
+import type { Project } from "../interfaces/Project";
+import Badge from "./Badge.astro";
+import APICon from "./icons/general/APICon.astro";
+import ComponentIcon from "./icons/general/ComponentIcon.astro";
+import DropdownArrow from "./icons/general/DropdownArrow.astro";
+import Mobile from "./icons/general/Mobile.astro";
+import WebIcon from "./icons/general/WebIcon.astro";
+
+interface Props extends Project {}
+const { title, duration, img, description, alt, codeSource, technologies } =
+  Astro.props;
 ---
 
-<div class="card bg-base-300 shadow-lg hover:scale-105 transition-all duration-300 hover:-translate-y-1 card-compact md:card-side">
-  <figure class="w-full md:w-56 aspect-video md:aspect-square">
-    <img
-      src={img}
-      alt={alt}
-      class="w-full h-full object-cover"
-    />
+<div class="card bg-base-300 shadow-lg card-compact md:card-side">
+  <figure class="w-full md:w-56 lg:w-64 h-48 md:h-56 lg:h-64 flex-shrink-0 overflow-hidden">
+    <img src={img} alt={alt} class="w-full h-full object-cover object-center" />
   </figure>
-  <div class="card-body p-4 md:p-6">
-    <h2 class="card-title text-lg md:text-xl">{title}</h2>
-    <p class="text-sm md:text-base leading-relaxed">{description}</p>
+  <div class="card-body p-3 sm:p-4 md:p-5 lg:p-6 flex flex-col">
+    <!-- Header: Título y Duración -->
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+      <h2 class="card-title text-base sm:text-lg md:text-xl lg:text-2xl leading-tight">{title}</h2>
+      <div class="self-start sm:self-auto">
+        <Badge size="sm" label={duration} icon={null} />
+      </div>
+    </div>
+
+    <!-- Descripción - Flex grow para ocupar espacio disponible -->
+    <p class="text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 flex-grow">{description}</p>
+
+    <!-- Footer: Tecnologías y Botón en el borde inferior -->
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 mt-auto">
+      <!-- Tecnologías -->
+      <div class="flex flex-wrap gap-1 sm:gap-2 flex-1 min-w-0">
+        {
+          technologies.map((tech) => (
+            <Badge 
+              key={tech.name} 
+              size="sm" 
+              label={tech.name} 
+              icon={tech.icon} 
+            />
+          ))
+        }
+      </div>
+
+      <!-- Botón -->
+      <div class="flex-shrink-0 self-end">
+        <div class="dropdown dropdown-bottom sm:dropdown-end">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-xs sm:btn-sm bg-[#569CDE] text-white hover:bg-[#4A9CE8] border-none text-xs sm:text-sm"
+          >
+            <ComponentIcon class="w-3 h-3 sm:w-4 sm:h-4" />
+            <span class="hidden xs:inline sm:inline">Código</span>
+            <span class="xs:hidden sm:hidden">Ver</span>
+            <DropdownArrow class="w-3 h-3 sm:w-4 sm:h-4" />
+          </div>
+          <ul
+            tabindex="0"
+            class="dropdown-content z-[1] menu p-2 shadow-lg bg-[#569CDE] rounded-box w-44 sm:w-52 text-white text-xs sm:text-sm"
+          >
+            <!-- API Repository -->
+            <li>
+              <a
+                href={codeSource.api}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
+              >
+                <APICon class="w-3 h-3 sm:w-4 sm:h-4" />
+                <span class="truncate">API Repository</span>
+              </a>
+            </li>
+
+            <!-- Web Repository -->
+            <li>
+              <a
+                href={codeSource.web}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
+              >
+                <WebIcon class="w-3 h-3 sm:w-4 sm:h-4" />
+                <span class="truncate">Web Repository</span>
+              </a>
+            </li>
+
+            {
+              codeSource.mobile && (
+                <li>
+                  <a
+                    href={codeSource.mobile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
+                  >
+                    <Mobile class="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span class="truncate">Mobile Repository</span>
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

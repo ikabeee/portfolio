@@ -7,10 +7,7 @@ import { projects } from "../constants/projects";
   {
     projects.map((project) => (
       <ProjectCard
-        title={project.title}
-        img={project.img}
-        description={project.description}
-        alt={project.alt}
+        {...project}
       />
     ))
   }
