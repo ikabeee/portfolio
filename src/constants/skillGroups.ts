@@ -10,6 +10,7 @@ import Docker from "../components/icons/technologies/Docker.astro";
 import Dotnet from "../components/icons/technologies/Dotnet.astro";
 import ExpressJs from "../components/icons/technologies/ExpressJs.astro";
 import Git from "../components/icons/technologies/Git.astro";
+import GithubCopilot from "../components/icons/technologies/GithubCopilot.astro";
 import HTML from "../components/icons/technologies/HTML.astro";
 import Java from "../components/icons/technologies/Java.astro";
 import Javascript from "../components/icons/technologies/Javascript.astro";
@@ -158,6 +159,11 @@ export const skillGroups: SkillGroup[] = [
                 name: "Postman",
                 url: "https://www.postman.com/",
                 icon: Postman
+            },
+            {
+                name: "GitHub Copilot",
+                url: "https://github.com/features/copilot",
+                icon: GithubCopilot
             }
         ]
     }

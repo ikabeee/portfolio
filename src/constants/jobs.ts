@@ -12,7 +12,7 @@ export const jobs: Job[] = [
         position: "Desarrollador Web",
         duration: "Julio 2025 - Presente",
         location: "Cancún, Quintana Roo, México",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        description: "Actualmente trabajo como freelancer desarrollando un SaaS para la gestión de restaurantes en Mérida utilizando React, Express y Docker. Además, diseño y construyo sitios web con Astro para la creación de contenido estático, ofreciendo soluciones prácticas y adaptadas a las necesidades de cada cliente.",
         technologies: [
             {
                 name: "React",
@@ -38,7 +38,7 @@ export const jobs: Job[] = [
         position: "Becario Desarrollador Web",
         duration: "Abril 2025 - Julio 2025",
         location: "Remoto",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        description: "Me enfoqué en optimizar el sistema de reportes del COBAY, mejorando su funcionalidad, y experiencia de usuario. Entre mis aportes destacan la corrección de errores críticos, la incorporación de exportaciones a formatos clave y la optimización de componentes reutilizables en Angular.",
         technologies: [
             {
                 name: "Angular",

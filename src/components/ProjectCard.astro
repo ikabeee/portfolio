@@ -10,35 +10,58 @@ import WebIcon from "./icons/general/WebIcon.astro";
 interface Props extends Project {}
 const { title, duration, img, description, alt, codeSource, technologies } =
   Astro.props;
+
+// ID único para el modal
+const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
 ---
 
 <div class="card bg-base-300 shadow-lg card-compact md:card-side">
-  <figure class="w-full md:w-56 lg:w-64 h-48 md:h-56 lg:h-64 flex-shrink-0 overflow-hidden">
-    <img src={img} alt={alt} class="w-full h-full object-cover object-center" />
+  <figure
+    class="w-full md:w-64 lg:w-72 h-48 md:h-64 lg:h-72 flex-shrink-0 overflow-hidden cursor-pointer relative group"
+    data-modal-id={modalId}
+  >
+    <img
+      src={img}
+      alt={alt}
+      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+    />
   </figure>
+
   <div class="card-body p-3 sm:p-4 md:p-5 lg:p-6 flex flex-col">
     <!-- Header: Título y Duración -->
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
-      <h2 class="card-title text-base sm:text-lg md:text-xl lg:text-2xl leading-tight">{title}</h2>
+    <div
+      class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2"
+    >
+      <h2
+        class="card-title text-base sm:text-lg md:text-xl lg:text-2xl leading-tight"
+      >
+        {title}
+      </h2>
       <div class="self-start sm:self-auto">
         <Badge size="sm" label={duration} icon={null} />
       </div>
     </div>
 
     <!-- Descripción - Flex grow para ocupar espacio disponible -->
-    <p class="text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 flex-grow">{description}</p>
+    <p
+      class="text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 flex-grow"
+    >
+      {description}
+    </p>
 
     <!-- Footer: Tecnologías y Botón en el borde inferior -->
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 mt-auto">
+    <div
+      class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 mt-auto"
+    >
       <!-- Tecnologías -->
       <div class="flex flex-wrap gap-1 sm:gap-2 flex-1 min-w-0">
         {
           technologies.map((tech) => (
-            <Badge 
-              key={tech.name} 
-              size="sm" 
-              label={tech.name} 
-              icon={tech.icon} 
+            <Badge
+              key={tech.name}
+              size="sm"
+              label={tech.name}
+              icon={tech.icon}
             />
           ))
         }
@@ -70,7 +93,7 @@ const { title, duration, img, description, alt, codeSource, technologies } =
                 class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
               >
                 <APICon class="w-3 h-3 sm:w-4 sm:h-4" />
-                <span class="truncate">API Repository</span>
+                <span class="truncate">API</span>
               </a>
             </li>
 
@@ -83,7 +106,7 @@ const { title, duration, img, description, alt, codeSource, technologies } =
                 class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
               >
                 <WebIcon class="w-3 h-3 sm:w-4 sm:h-4" />
-                <span class="truncate">Web Repository</span>
+                <span class="truncate">Web</span>
               </a>
             </li>
 
@@ -97,7 +120,7 @@ const { title, duration, img, description, alt, codeSource, technologies } =
                     class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
                   >
                     <Mobile class="w-3 h-3 sm:w-4 sm:h-4" />
-                    <span class="truncate">Mobile Repository</span>
+                    <span class="truncate">Móvil</span>
                   </a>
                 </li>
               )
@@ -108,3 +131,111 @@ const { title, duration, img, description, alt, codeSource, technologies } =
     </div>
   </div>
 </div>
+
+<!-- Modal personalizado con divs -->
+<div 
+  id={modalId} 
+  class="fixed inset-0 backdrop-blur-md bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300 ease-in-out"
+>
+  <!-- Backdrop clickeable -->
+  <div class="absolute inset-0" data-close-modal={modalId}></div>
+  
+  <!-- Modal content -->
+  <div class="bg-base-200 rounded-lg shadow-xl max-w-5xl w-11/12 max-h-[90vh] relative transform scale-90 transition-transform duration-300 ease-in-out">
+    <!-- Botón de cerrar -->
+    <button 
+      type="button"
+      class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10"
+      data-close-modal={modalId}
+    >
+      ✕
+    </button>
+    
+    <div class="p-6 flex flex-col gap-4">
+      <!-- Título del proyecto en el modal -->
+      <h3 class="font-bold text-lg text-center">{title}</h3>
+
+      <!-- Imagen completa -->
+      <div class="flex justify-center overflow-auto">
+        <img
+          src={img}
+          alt={alt}
+          class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Función para abrir modal
+    function openModal(modalId: string): void {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('opacity-100', 'visible');
+        const content = modal.querySelector('.transform') as HTMLElement;
+        if (content) {
+          content.classList.remove('scale-90');
+          content.classList.add('scale-100');
+        }
+        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+      }
+    }
+
+    // Función para cerrar modal
+    function closeModal(modalId: string): void {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        const content = modal.querySelector('.transform') as HTMLElement;
+        if (content) {
+          content.classList.remove('scale-100');
+          content.classList.add('scale-90');
+        }
+        modal.classList.remove('opacity-100', 'visible');
+        modal.classList.add('opacity-0', 'invisible');
+        document.body.style.overflow = ''; // Restaurar scroll del body
+      }
+    }
+
+    // Event listeners para abrir modales
+    const modalTriggers = document.querySelectorAll('[data-modal-id]');
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', function(e: Event) {
+        e.preventDefault();
+        e.stopPropagation();
+        const target = e.currentTarget as HTMLElement;
+        const modalId = target.getAttribute('data-modal-id');
+        if (modalId) {
+          openModal(modalId);
+        }
+      });
+    });
+
+    // Event listeners para cerrar modales
+    const closeButtons = document.querySelectorAll('[data-close-modal]');
+    closeButtons.forEach((button) => {
+      button.addEventListener('click', function(e: Event) {
+        e.preventDefault();
+        e.stopPropagation();
+        const target = e.currentTarget as HTMLElement;
+        const modalId = target.getAttribute('data-close-modal');
+        if (modalId) {
+          closeModal(modalId);
+        }
+      });
+    });
+
+    // Cerrar modal con ESC
+    document.addEventListener('keydown', function(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        const visibleModal = document.querySelector('.fixed[id^="modal-"]:not(.invisible)') as HTMLElement;
+        if (visibleModal) {
+          const modalId = visibleModal.id;
+          closeModal(modalId);
+        }
+      }
+    });
+  });
+</script>

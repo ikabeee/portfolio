@@ -1,4 +1,11 @@
+import DockerWhite from "../components/icons/white-tech/DockerWhite.astro";
+import ExpressWhite from "../components/icons/white-tech/ExpressWhite.astro";
+import NestWhite from "../components/icons/white-tech/NestWhite.astro";
+import NodeWhite from "../components/icons/white-tech/NodeWhite.astro";
+import PostgresWhite from "../components/icons/white-tech/PostgresWhite.astro";
 import ReactWhite from "../components/icons/white-tech/ReactWhite.astro";
+import TailwindWhite from "../components/icons/white-tech/TailwindWhite.astro";
+import TSWhite from "../components/icons/white-tech/TSWhite.astro";
 import type { Project } from "../interfaces/Project";
 
 
@@ -6,12 +13,58 @@ export const projects: Project[] = [
   {
     title: "Ruta fácil - Proyecto de investigación",
     duration: "Marzo 2024 - Junio 2024",
-    img: "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp",
+    img: "/src/assets/ruta-facil.png",
     description: "This is the description for Project One.",
     alt: "Project One",
     codeSource: {
-      api: "https://github.com/username/repo-one",
-      web: "https://project-one.com",
+      api: "https://github.com/ikabeee/ruta-facil-api",
+      web: "https://github.com/ikabeee/ruta-facil-app-web",
+      mobile: "https://github.com/ikabeee/ruta-facil-app"
+    },
+    technologies: [
+      {
+        name: "React",
+        icon: ReactWhite,
+      },
+      {
+        name: "NodeJS",
+        icon: NodeWhite,
+      },
+      {
+        name: "React Native",
+        icon: ReactWhite,
+      },
+      {
+        name: "TypeScript",
+        icon: TSWhite,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: TailwindWhite,
+      },
+      {
+        name: "NestJS",
+        icon: NestWhite,
+      },
+      {
+        name: "PostgreSQL",
+        icon: PostgresWhite,
+      },
+      {
+        name: "Docker",
+        icon: DockerWhite,
+      }
+    ],
+  },
+  {
+    title: "EYU",
+    duration: "Septiembre 2024 - Diciembre 2024",
+    img: "/src/assets/landing-eyu.png",
+    description: "This is the description for Project One.",
+    alt: "Project One",
+    codeSource: {
+      api: "https://github.com/ikabeee/eyu-backend",
+      web: "https://github.com/ikabeee/eyu-frontend",
       mobile: null
     },
     technologies: [
@@ -20,66 +73,28 @@ export const projects: Project[] = [
         icon: ReactWhite,
       },
       {
-        name: "TypeScript",
-        icon: ReactWhite,
-      },
-      {
-        name: "Tailwind CSS",
-        icon: ReactWhite,
-      },
-      {
-        name: "NestJS",
-        icon: ReactWhite,
-      },
-      {
-        name: "PostgreSQL",
-        icon: ReactWhite,
-      },
-      {
-        name: "Docker",
-        icon: ReactWhite,
-      }
-    ],
-  },
-  {
-    title: "EYU",
-    duration: "Septiembre 2024 - Diciembre 2024",
-    img: "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp",
-    description: "This is the description for Project One.",
-    alt: "Project One",
-    codeSource: {
-      api: "https://github.com/username/repo-one",
-      web: "https://project-one.com",
-      mobile: "https://project-one-mobile.com"
-    },
-    technologies: [
-      {
-        name: "React",
-        icon: ReactWhite,
-      },
-      {
-        name: "React Native",
-        icon: ReactWhite,
+        name: "NodeJS",
+        icon: NodeWhite,
       },
       {
         name: "TypeScript",
-        icon: ReactWhite,
+        icon: TSWhite,
       },
       {
         name: "Tailwind CSS",
-        icon: ReactWhite,
+        icon: TailwindWhite,
       },
       {
         name: "Express",
-        icon: ReactWhite,
+        icon: ExpressWhite,
       },
       {
         name: "PostgreSQL",
-        icon: ReactWhite,
+        icon: PostgresWhite,
       },
       {
         name: "Docker",
-        icon: ReactWhite,
+        icon: DockerWhite,
       }
     ],
   },
