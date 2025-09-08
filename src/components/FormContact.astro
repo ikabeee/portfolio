@@ -47,24 +47,32 @@ import Send from "./icons/general/Send.astro";
   </fieldset>
   <div id="result" class="hidden text-sm p-3 rounded-lg"></div>
   <div class="flex justify-center md:justify-start">
-    <Button type="submit" label="Enviar" size="sm" icon={Send} />
+    <button
+      type="submit"
+      title="Enviar mensaje de contacto"
+      class={`btn btn-md flex gap-2 bg-[#61AFEF] text-white items-center`}
+    >
+      <span id="button-text">Enviar</span>
+      <Send class="size-4 md:size-4 fill-white" />
+    </button>
   </div>
 </form>
+
 <script is:inline>
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form");
     const result = document.getElementById("result");
     const submitButton = form.querySelector('button[type="submit"]');
-    const buttonSpan = submitButton.querySelector("span") || submitButton;
+    const buttonText = document.getElementById("button-text");
 
-    const originalText = buttonSpan.textContent;
+    const originalText = buttonText.textContent;
     const originalClasses = submitButton.className;
 
     function checkRateLimit() {
       const lastSubmit = localStorage.getItem("lastFormSubmit");
       if (lastSubmit) {
         const timeElapsed = Date.now() - parseInt(lastSubmit);
-        const oneMinute = 60 * 1000; // 1 minuto en milisegundos
+        const oneMinute = 60 * 1000;
 
         if (timeElapsed < oneMinute) {
           const remainingTime = Math.ceil((oneMinute - timeElapsed) / 1000);
@@ -102,20 +110,19 @@ import Send from "./icons/general/Send.astro";
         /bg-\[#61AFEF\]/,
         "bg-blue-500"
       );
-      buttonSpan.textContent = "Enviando...";
+      buttonText.textContent = "Enviando...";
     }
 
     function resetButton() {
       submitButton.disabled = false;
       submitButton.className = originalClasses;
-      buttonSpan.textContent = originalText;
+      buttonText.textContent = originalText;
     }
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       hideResult();
 
-      // Verificar rate limit
       if (!checkRateLimit()) {
         return;
       }
@@ -136,12 +143,10 @@ import Send from "./icons/general/Send.astro";
           const json = await response.json();
 
           if (response.ok && json.success) {
-            // Guardar timestamp del envío exitoso
             localStorage.setItem("lastFormSubmit", Date.now().toString());
             showSuccess("¡Mensaje enviado exitosamente! Te contactaré pronto.");
             form.reset();
           } else {
-            // Manejar errores específicos
             if (response.status === 429) {
               showError("Límite de envíos excedido. Intenta más tarde.");
             } else {

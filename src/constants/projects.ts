@@ -11,7 +11,8 @@ export const projects: Project[] = [
     alt: "Project One",
     codeSource: {
       api: "https://github.com/username/repo-one",
-      web: "https://project-one.com"
+      web: "https://project-one.com",
+      mobile: null
     },
     technologies: [
       {
@@ -48,7 +49,8 @@ export const projects: Project[] = [
     alt: "Project One",
     codeSource: {
       api: "",
-      web: ""
+      web: "",
+      mobile: ""
     },
     technologies: [
       {
