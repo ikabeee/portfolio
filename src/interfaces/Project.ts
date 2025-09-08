@@ -7,5 +7,9 @@ export interface Project {
     codeSource: {
         api: string;
         web: string;
-    }
+    };
+    technologies: {
+        name: string;
+        icon: astroHTML.JSX.Element;
+    }[];
 }

@@ -1,3 +1,4 @@
+import ReactWhite from "../components/icons/white-tech/ReactWhite.astro";
 import type { Project } from "../interfaces/Project";
 
 
@@ -11,8 +12,34 @@ export const projects: Project[] = [
     codeSource: {
       api: "https://github.com/username/repo-one",
       web: "https://project-one.com"
-    }
-  },  
+    },
+    technologies: [
+      {
+        name: "React",
+        icon: ReactWhite,
+      },
+      {
+        name: "TypeScript",
+        icon: ReactWhite,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: ReactWhite,
+      },
+      {
+        name: "NestJS",
+        icon: ReactWhite,
+      },
+      {
+        name: "PostgreSQL",
+        icon: ReactWhite,
+      },
+      {
+        name: "Docker",
+        icon: ReactWhite,
+      }
+    ],
+  },
   {
     title: "EYU",
     duration: "Septiembre 2024 - Diciembre 2024",
@@ -22,6 +49,36 @@ export const projects: Project[] = [
     codeSource: {
       api: "",
       web: ""
-    }
+    },
+    technologies: [
+      {
+        name: "React",
+        icon: ReactWhite,
+      },
+      {
+        name: "React Native",
+        icon: ReactWhite,
+      },
+      {
+        name: "TypeScript",
+        icon: ReactWhite,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: ReactWhite,
+      },
+      {
+        name: "Express",
+        icon: ReactWhite,
+      },
+      {
+        name: "PostgreSQL",
+        icon: ReactWhite,
+      },
+      {
+        name: "Docker",
+        icon: ReactWhite,
+      }
+    ],
   },
 ]
