@@ -1,5 +1,7 @@
 import DockerWhite from "../components/icons/white-tech/DockerWhite.astro";
 import ExpressWhite from "../components/icons/white-tech/ExpressWhite.astro";
+import JSWhite from "../components/icons/white-tech/JSWhite.astro";
+import MongoDBWhite from "../components/icons/white-tech/MongoDBWhite.astro";
 import NestWhite from "../components/icons/white-tech/NestWhite.astro";
 import NodeWhite from "../components/icons/white-tech/NodeWhite.astro";
 import PostgresWhite from "../components/icons/white-tech/PostgresWhite.astro";
@@ -11,9 +13,62 @@ import type { Project } from "../interfaces/Project";
 
 export const projects: Project[] = [
   {
+    title: "Centlogic Restaurantes",
+    duration: "Agosto 2025 - Noviembre 2025",
+    img: "/centlogic-restaurantes/cover.png",
+    objects: [
+      "/centlogic-restaurantes/cover.png",
+      "/centlogic-restaurantes/take-order.png",
+      "/centlogic-restaurantes/order-history.png",
+      "/centlogic-restaurantes/cashier.png",
+      "/centlogic-restaurantes/products.png",
+      "/centlogic-restaurantes/tickets.png",
+      "/centlogic-restaurantes/active-order.png",
+    ],
+    description: "DevConnector es una red social para desarrolladores donde pueden crear perfiles, compartir sus proyectos, y conectarse con otros profesionales del sector. La plataforma permite a los usuarios publicar actualizaciones, comentar en las publicaciones de otros, y seguir a sus desarrolladores favoritos.",
+    alt: "Logo de Centloginc Restaurantes",
+    codeSource: {
+      api: "No disponible",
+      web: "No disponible"
+    },
+    technologies: [
+      {
+        name: "React",
+        icon: ReactWhite,
+      },
+      {
+        name: "NodeJS",
+        icon: NodeWhite,
+      },
+      {
+        name: "Javascript",
+        icon: JSWhite,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: TailwindWhite,
+      },
+      {
+        name: "Express",
+        icon: ExpressWhite,
+      },
+      {
+        name: "MongoDB",
+        icon: MongoDBWhite,
+      },
+      {
+        name: "Docker",
+        icon: DockerWhite,
+      }
+    ],
+  },
+  {
     title: "Ruta fácil - Proyecto de investigación",
     duration: "Marzo 2024 - Junio 2024",
-    img: "/ruta-facil.png",
+    img: "/ruta-facil/ruta-facil.png",
+    objects: [
+      "/ruta-facil/ruta-facil.png",
+    ],
     description: "Ruta fácil es una plataforma diseñada para facilitar la movilidad de personas que se encuentran en el pueblo mágico de Huauchinango, Puebla. La plataforma ofrece una aplicación móvil para los usuarios y un dashboard web para los administradores, permitiendo una gestión eficiente de las rutas y servicios de transporte en la zona.",
     alt: "Dashboard de Ruta fácil",
     codeSource: {
@@ -59,7 +114,10 @@ export const projects: Project[] = [
   {
     title: "EYU",
     duration: "Septiembre 2024 - Diciembre 2024",
-    img: "/landing-eyu.png",
+    img: "/eyu/landing-eyu.png",
+    objects: [
+      "/eyu/landing-eyu.png",
+    ],
     description: "Explore Your Universe (EYU) es una plataforma web que permite a los usuarios explorar diferentes universidades, programas académicos, y actividades extracurriculares. La plataforma está diseñada para ayudar a los estudiantes a tomar decisiones informadas sobre su educación superior, proporcionando información detallada y recursos útiles.",
     alt: "Catálogo de EYU",
     codeSource: {

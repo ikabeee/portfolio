@@ -8,10 +8,11 @@ import Mobile from "./icons/general/Mobile.astro";
 import WebIcon from "./icons/general/WebIcon.astro";
 
 interface Props extends Project {}
-const { title, duration, img, description, alt, codeSource, technologies } =
+const { title, duration, img, description, alt, codeSource, technologies, objects } =
   Astro.props;
 
-// ID único para el modal
+const images: string[] = (objects && objects.length > 0) ? objects : [img];
+
 const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
 ---
 
@@ -19,9 +20,10 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
   <figure
     class="w-full md:w-64 lg:w-72 h-48 md:h-64 lg:h-72 flex-shrink-0 overflow-hidden cursor-pointer relative group"
     data-modal-id={modalId}
+    data-images={JSON.stringify(images)}
   >
     <img
-      src={img}
+      src={images[0]}
       alt={alt}
       class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
     />
@@ -85,33 +87,55 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
             class="dropdown-content z-[1] menu p-2 shadow-lg bg-[#569CDE] rounded-box w-44 sm:w-52 text-white text-xs sm:text-sm"
           >
             <!-- API Repository -->
-            <li>
-              <a
-                href={codeSource.api}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
-              >
-                <APICon class="w-3 h-3 sm:w-4 sm:h-4" />
-                <span class="truncate">API</span>
-              </a>
-            </li>
+            {
+              (codeSource.api && codeSource.api !== "No disponible") ? (
+                <li>
+                  <a
+                    href={codeSource.api}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
+                  >
+                    <APICon class="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span class="truncate">API</span>
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <div class="p-2 flex items-center gap-2 text-white opacity-60 cursor-not-allowed">
+                    <APICon class="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span class="truncate">API — No disponible</span>
+                  </div>
+                </li>
+              )
+            }
 
             <!-- Web Repository -->
-            <li>
-              <a
-                href={codeSource.web}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
-              >
-                <WebIcon class="w-3 h-3 sm:w-4 sm:h-4" />
-                <span class="truncate">Web</span>
-              </a>
-            </li>
+            {
+              (codeSource.web && codeSource.web !== "No disponible") ? (
+                <li>
+                  <a
+                    href={codeSource.web}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-white hover:bg-[#4A9CE8] transition-colors duration-200 p-2"
+                  >
+                    <WebIcon class="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span class="truncate">Web</span>
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <div class="p-2 flex items-center gap-2 text-white opacity-60 cursor-not-allowed">
+                    <WebIcon class="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span class="truncate">Web — No disponible</span>
+                  </div>
+                </li>
+              )
+            }
 
             {
-              codeSource.mobile && (
+              (codeSource.mobile && codeSource.mobile !== "No disponible") ? (
                 <li>
                   <a
                     href={codeSource.mobile}
@@ -123,6 +147,9 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
                     <span class="truncate">Móvil</span>
                   </a>
                 </li>
+              ) : (
+                // Si no hay mobile, no renderizamos nada para mantener el menú limpio
+                null
               )
             }
           </ul>
@@ -155,13 +182,29 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
       <!-- Título del proyecto en el modal -->
       <h3 class="font-bold text-lg text-center">{title}</h3>
 
-      <!-- Imagen completa -->
-      <div class="flex justify-center overflow-auto">
-        <img
-          src={img}
-          alt={alt}
-          class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-lg"
-        />
+      <!-- Galería / Imagen principal -->
+      <div class="flex flex-col items-center gap-3">
+        <div class="relative w-full flex justify-center">
+          <button type="button" class="absolute left-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-sm" data-gallery-prev={modalId} aria-label="Anterior">◀</button>
+          <img
+            id={`modal-img-${modalId}`}
+            src={images[0]}
+            alt={alt}
+            class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-lg"
+          />
+          <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-sm" data-gallery-next={modalId} aria-label="Siguiente">▶</button>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="flex gap-2 overflow-x-auto py-2" id={`modal-thumbs-${modalId}`}>
+          {
+            images.map((src, idx) => (
+              <button type="button" class="rounded-md overflow-hidden border-2 border-transparent" data-thumb-index={idx} data-thumb-modal={modalId}>
+                <img src={src} alt={`${title} thumb ${idx + 1}`} class="w-20 h-12 object-cover" />
+              </button>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
@@ -180,7 +223,31 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
           content.classList.remove('scale-90');
           content.classList.add('scale-100');
         }
-        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+
+        try {
+          const trigger = document.querySelector(`[data-modal-id="${modalId}"]`) as HTMLElement | null;
+          const triggerData = trigger ? trigger.getAttribute('data-images') : null;
+
+          if (triggerData) {
+            modal.setAttribute('data-images', triggerData);
+          }
+
+          const dataImages = modal.getAttribute('data-images');
+          const images = dataImages ? JSON.parse(dataImages) : null;
+          if (images && images.length > 0) {
+            modal.dataset.currentIndex = '0';
+            const mainImg = modal.querySelector(`#modal-img-${modal.id}`) as HTMLImageElement;
+            if (mainImg) mainImg.src = images[0];
+            // mark first thumb active
+            const thumbs = modal.querySelectorAll(`[data-thumb-modal="${modal.id}"]`);
+            thumbs.forEach((t) => t.classList.remove('ring-2', 'ring-[#569CDE]'));
+            if (thumbs[0]) thumbs[0].classList.add('ring-2', 'ring-[#569CDE]');
+          }
+        } catch (err) {
+          // ignore parse errors
+        }
+
+        document.body.style.overflow = 'hidden'; 
       }
     }
 
@@ -195,7 +262,7 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
         }
         modal.classList.remove('opacity-100', 'visible');
         modal.classList.add('opacity-0', 'invisible');
-        document.body.style.overflow = ''; // Restaurar scroll del body
+        document.body.style.overflow = '';
       }
     }
 
@@ -213,7 +280,7 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
       });
     });
 
-    // Event listeners para cerrar modales
+
     const closeButtons = document.querySelectorAll('[data-close-modal]');
     closeButtons.forEach((button) => {
       button.addEventListener('click', function(e: Event) {
@@ -225,6 +292,71 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
           closeModal(modalId);
         }
       });
+    });
+
+    document.querySelectorAll('[data-gallery-prev]').forEach((btn) => {
+      btn.addEventListener('click', function(e: Event) {
+        const modalId = (e.currentTarget as HTMLElement).getAttribute('data-gallery-prev');
+        if (!modalId) return;
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        const dataImages = modal.getAttribute('data-images');
+        if (!dataImages) return;
+        const images = JSON.parse(dataImages);
+        let idx = parseInt(modal.dataset.currentIndex || '0', 10);
+        idx = (idx - 1 + images.length) % images.length;
+        modal.dataset.currentIndex = String(idx);
+        const mainImg = modal.querySelector(`#modal-img-${modalId}`) as HTMLImageElement;
+        if (mainImg) mainImg.src = images[idx];
+        // update thumbs
+        const thumbs = modal.querySelectorAll(`[data-thumb-modal="${modalId}"]`);
+        thumbs.forEach((t) => t.classList.remove('ring-2', 'ring-[#569CDE]'));
+        const active = modal.querySelector(`[data-thumb-modal="${modalId}"][data-thumb-index="${idx}"]`);
+        if (active) active.classList.add('ring-2', 'ring-[#569CDE]');
+      });
+    });
+
+    document.querySelectorAll('[data-gallery-next]').forEach((btn) => {
+      btn.addEventListener('click', function(e: Event) {
+        const modalId = (e.currentTarget as HTMLElement).getAttribute('data-gallery-next');
+        if (!modalId) return;
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        const dataImages = modal.getAttribute('data-images');
+        if (!dataImages) return;
+        const images = JSON.parse(dataImages);
+        let idx = parseInt(modal.dataset.currentIndex || '0', 10);
+        idx = (idx + 1) % images.length;
+        modal.dataset.currentIndex = String(idx);
+        const mainImg = modal.querySelector(`#modal-img-${modalId}`) as HTMLImageElement;
+        if (mainImg) mainImg.src = images[idx];
+        // update thumbs
+        const thumbs = modal.querySelectorAll(`[data-thumb-modal="${modalId}"]`);
+        thumbs.forEach((t) => t.classList.remove('ring-2', 'ring-[#569CDE]'));
+        const active = modal.querySelector(`[data-thumb-modal="${modalId}"][data-thumb-index="${idx}"]`);
+        if (active) active.classList.add('ring-2', 'ring-[#569CDE]');
+      });
+    });
+
+    // Thumbnail clicks
+    document.addEventListener('click', function(e: Event) {
+      const target = e.target as HTMLElement;
+      const thumb = target.closest('[data-thumb-index]') as HTMLElement | null;
+      if (!thumb) return;
+      const modalId = thumb.getAttribute('data-thumb-modal');
+      const idx = Number(thumb.getAttribute('data-thumb-index'));
+      if (!modalId || isNaN(idx)) return;
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      const dataImages = modal.getAttribute('data-images');
+      if (!dataImages) return;
+      const images = JSON.parse(dataImages);
+      modal.dataset.currentIndex = String(idx);
+      const mainImg = modal.querySelector(`#modal-img-${modalId}`) as HTMLImageElement;
+      if (mainImg) mainImg.src = images[idx];
+      const thumbs = modal.querySelectorAll(`[data-thumb-modal="${modalId}"]`);
+      thumbs.forEach((t) => t.classList.remove('ring-2', 'ring-[#569CDE]'));
+      thumb.classList.add('ring-2', 'ring-[#569CDE]');
     });
 
     // Cerrar modal con ESC
