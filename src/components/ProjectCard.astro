@@ -11,10 +11,8 @@ interface Props extends Project {}
 const { title, duration, img, description, alt, codeSource, technologies, objects } =
   Astro.props;
 
-// Images to use for gallery/overview: prefer `objects` array, fallback a `img`
 const images: string[] = (objects && objects.length > 0) ? objects : [img];
 
-// ID único para el modal
 const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
 ---
 
@@ -226,10 +224,15 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
           content.classList.add('scale-100');
         }
 
-        // Inicializar galería si hay imágenes
         try {
-          const gallery = modal.querySelector('.modal-gallery') as HTMLElement;
-          const dataImages = modal.getAttribute('data-images') || gallery?.getAttribute('data-images');
+          const trigger = document.querySelector(`[data-modal-id="${modalId}"]`) as HTMLElement | null;
+          const triggerData = trigger ? trigger.getAttribute('data-images') : null;
+
+          if (triggerData) {
+            modal.setAttribute('data-images', triggerData);
+          }
+
+          const dataImages = modal.getAttribute('data-images');
           const images = dataImages ? JSON.parse(dataImages) : null;
           if (images && images.length > 0) {
             modal.dataset.currentIndex = '0';
@@ -244,7 +247,7 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
           // ignore parse errors
         }
 
-        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+        document.body.style.overflow = 'hidden'; 
       }
     }
 
@@ -259,7 +262,7 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
         }
         modal.classList.remove('opacity-100', 'visible');
         modal.classList.add('opacity-0', 'invisible');
-        document.body.style.overflow = ''; // Restaurar scroll del body
+        document.body.style.overflow = '';
       }
     }
 
@@ -277,7 +280,7 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
       });
     });
 
-    // Event listeners para cerrar modales
+
     const closeButtons = document.querySelectorAll('[data-close-modal]');
     closeButtons.forEach((button) => {
       button.addEventListener('click', function(e: Event) {
@@ -291,7 +294,6 @@ const modalId = `modal-${title.replace(/\s+/g, "-").toLowerCase()}`;
       });
     });
 
-    // Gallery navigation (prev/next)
     document.querySelectorAll('[data-gallery-prev]').forEach((btn) => {
       btn.addEventListener('click', function(e: Event) {
         const modalId = (e.currentTarget as HTMLElement).getAttribute('data-gallery-prev');
