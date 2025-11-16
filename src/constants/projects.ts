@@ -25,7 +25,7 @@ export const projects: Project[] = [
       "/centlogic-restaurantes/tickets.png",
       "/centlogic-restaurantes/active-order.png",
     ],
-    description: "DevConnector es una red social para desarrolladores donde pueden crear perfiles, compartir sus proyectos, y conectarse con otros profesionales del sector. La plataforma permite a los usuarios publicar actualizaciones, comentar en las publicaciones de otros, y seguir a sus desarrolladores favoritos.",
+    description: "Sistema POS diseñado para restaurantes que buscan digitalizar procesos operativos como pedidos, inventario, menú, empleados y reportes. Está desarrollado con Node.js, Express y MongoDB en el backend, bajo una arquitectura en capas, y con React y Vite en el frontend. Incluye comunicación en tiempo real mediante WebSockets, soporte para impresión ESC/POS y generación de tickets PDF. El proyecto está desplegado en Render y orientado a microempresas que necesitan una herramienta práctica, accesible y adaptable a su flujo de trabajo diario",
     alt: "Logo de Centloginc Restaurantes",
     codeSource: {
       api: "No disponible",
